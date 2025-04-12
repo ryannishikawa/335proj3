@@ -1,0 +1,52 @@
+The Spread of Fire in a Forest problem is:
+
+Input: a matrix of 2's, 1's, and 0's where 2 represents a burning tree, 2 represents a healthy tree, and 0 represents an empty area
+
+Output: the number of days it takes for every healthy tree to burn down, or -1 if it is impossible for every healthy tree to burn down
+
+dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}}
+def minDaysToBurn(forest):
+    if forest is empty:
+        return -1
+    
+    rows = number of rows in forest
+    cols = number of columns in forest
+    create queue to store coordinates of burning trees
+    healthyTrees = 0
+
+    for i from 0 to rows-1:
+        for j from 0 to cols-1:
+            if forest[i][j] == 2:
+                push to queue
+            if forest[i][j] == 1:
+                increment healthyTrees
+    
+    if queue is empty:
+        return -1
+    
+    days = 0
+    burnedTrees = 0
+
+while queue is not empty:
+    size = number of elements in queue
+
+    for i from 0 to size-1:
+        [x, y] = front element of queue
+        remove front element of queue
+
+        for each [dx, dy] in dirs:
+            newX = x + dx
+            newY = y + dy
+
+            if newX is between 0 and rows-1 && newY is between 0 and cols-1 && forest[newX][newY] == 1:
+                set forest[newX][newY] equal to 2
+                push {newX, newY} to queue
+                increment burnedTrees
+
+    if queue is not empty:
+        increment days
+
+if burnedTrees != healthyTrees:
+    return -1
+
+return days
