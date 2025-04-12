@@ -50,3 +50,11 @@ if burnedTrees != healthyTrees:
     return -1
 
 return days
+
+Efficiency Analysis:
+
+"for i from 0 to rows-1" and "for j from 0 to cols-1" run at most (rows × cols) times.
+
+The while loop processes each cell only once. For each burning tree, it checks at most 4 neighboring cells, resulting in a constant amount of work per cell. Thus, the overall work done by the while loop is also proportional to (rows × cols).
+
+Therefore, the efficiency class of this algorithm is O(rows × cols), which is linear in the size of the input forest.
